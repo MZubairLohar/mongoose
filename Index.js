@@ -20,7 +20,7 @@ import blockNumber from "./BlockFetcher.js"
     app.use(express.json());
     const router = express.Router();
     var fromBlock = 26562743n;
-
+    var data;
 
 // *** contract ***
     const client = createThirdwebClient({
@@ -153,7 +153,7 @@ const userRoutes = router.get("/", async (req, res) => {
         console.log("Connected to MongoDB");
         const users = await newUser.find();
         res.json(users);
-        res.send(users)
+        
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
@@ -164,4 +164,4 @@ app.use("/newusers", userRoutes);
 // app.post("/newusers",userRoutes.get("/newusers", async(res,req)=>{
 //     const post = await  
 // }) )
-app.listen(3001, () => console.log(`Server started on port 3001`) );
+app.listen(3001, () => console.log(`Server started on port 3001`));
